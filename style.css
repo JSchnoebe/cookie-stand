@@ -1,3 +1,29 @@
 section {
     margin-bottom: 25px;
 }
+
+ 
+
+h1 {
+    color: rgb(116, 70, 15); 
+    border-bottom: saddlebrown 20;
+    border-radius: 20px;
+    border-style: double;
+
+}
+
+body {
+    background-color: rgb(253, 198, 159);
+    margin: 0 auto;
+    width: 1200px
+}
+
+.center {
+    margin: auto;
+    padding: 10px;
+  }
+
+  img {
+    display:block;
+    margin:auto;
+  }
