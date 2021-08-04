@@ -48,6 +48,14 @@ StoreCreator.prototype.calcCookiesEachHour = function(){
 StoreCreator.prototype.render = function(){
 
     let storeTable = document.getElementById('storeTable');
+    let tableRow = document.createElement('tr');
+    let locationNameCell = document.createElement('td');
+    locationNameCell.textContent = this.locationName;
+    tableRow.appendChild(locationNameCell);
+
+
+    storeTable.appendChild(tableRow);
+
 
 
 }
