@@ -1,0 +1,32 @@
+section {
+    margin-bottom: 25px;
+}
+
+ 
+
+h1 {
+    color: rgb(116, 70, 15); 
+    border-bottom: saddlebrown 20;
+    border-radius: 20px;
+    border-style: double;
+
+}
+
+body {
+    background-color: rgb(253, 198, 159);
+    width: 1200px;
+    border-style: solid 30px;
+    border-color: turquoise;
+    border-radius: 50px;
+}
+
+.center {
+    margin: auto;
+    padding: 10px;
+    
+  }
+
+  img {
+    display:block;
+    margin:auto;
+  }
