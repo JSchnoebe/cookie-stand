@@ -49,10 +49,16 @@ StoreCreator.prototype.render = function(){
 
     let storeTable = document.getElementById('storeTable');
     let tableRow = document.createElement('tr');
+    
     let locationNameCell = document.createElement('td');
     locationNameCell.textContent = this.locationName;
     tableRow.appendChild(locationNameCell);
 
+    for (let i = 0; i < hours.length; i++){
+        let cookieData = document.createElement('td');
+        cookieData.textContent = this.cookiesEachHour[i];
+        tableRow.appendChild(cookieData);
+    }
 
     storeTable.appendChild(tableRow);
 
@@ -105,7 +111,7 @@ storeFive.calcCustEachHour();
 storeFive.calcCookiesEachHour();
 console.log(storeFive);
 
-const allStores = [storeOne, storeTwo, storeThree, storeFive];
+const allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
 
 (function renderAllStores(){
     for(let i = 0; i < allStores.length; i++){

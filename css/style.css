@@ -14,13 +14,16 @@ h1 {
 
 body {
     background-color: rgb(253, 198, 159);
-    margin: 0 auto;
-    width: 1200px
+    width: 1200px;
+    border-style: solid 30px;
+    border-color: turquoise;
+    border-radius: 50px;
 }
 
 .center {
     margin: auto;
     padding: 10px;
+    
   }
 
   img {
