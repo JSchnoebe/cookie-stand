@@ -59,6 +59,11 @@ StoreCreator.prototype.render = function(){
         cookieData.textContent = this.cookiesEachHour[i];
         tableRow.appendChild(cookieData);
     }
+        let cookieTotal = document.createElement('td');
+        cookieTotal.textContent = this.totalDailyCookies;
+        tableRow.appendChild(cookieTotal);
+       
+    
 
     storeTable.appendChild(tableRow);
 
