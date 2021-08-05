@@ -5,10 +5,15 @@ section {
  
 
 h1 {
-    color: rgb(116, 70, 15); 
+    color: rgb(112, 81, 43);
+    background-color: cadetblue; 
     border-bottom: saddlebrown 20;
-    border-radius: 20px;
-    border-style: double;
+    /* border-radius: 30px; */
+    border-style: solid;
+    font-family: 'permanent marker' ;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 50px;
 
 }
 
@@ -17,18 +22,21 @@ body {
     width: 1200px;
     border-style: solid 30px;
     border-color: turquoise;
-    border-radius: 50px;
+    /* border-radius: 50px; */
     margin: 0 auto;
 }
 
 .center {
-    margin: auto;
+    /* margin-right: auto; */
+    /* margin-left: auto; */
     padding: 10px;
+    display: inline-block;
+    margin-left: 100px;
     
   }
 
   img {
-    display:block;
+    /* display:block; */
     margin:auto;
   }
 
@@ -36,10 +44,55 @@ body {
     
       width: 1200px;
       background-color: cadetblue ;
+      border-color: saddlebrown;
+      border-style:outset;
+      /* border-radius: 20px; */
   }
   footer ul {
      display:inline-block;
       list-style-type: none;
       margin-right: 20px;
       
+  }
+
+  #storeTable {
+      border-radius: 10px;
+      border-style: double;
+      border-color: saddlebrown;
+  }
+
+   ul {
+      border-color: rgb(179, 130, 95);
+      border-style: inset;
+      border-radius: 10px;
+      padding-left: 1px;
+      background-color: rgb(253, 198, 159);
+  }
+
+  #family {
+      height: 200px;
+  }
+
+  .footerImages {
+      padding:20px;
+  }
+
+  footer ul {
+      margin-left: 80px;
+  }
+
+  .chinook {
+      float:left;
+      border: 20px outset rgb(116, 70, 15);
+  }
+
+  h2 {
+      font-family: 'permanent marker';
+      text-align: center;
+      text-decoration: underline;
+  }
+
+  a {
+      float: left;
+
   }

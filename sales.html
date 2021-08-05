@@ -4,39 +4,31 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Cookie Sales Table</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-    <!-- <section id="seattle">Seattle</section>
-    <section id="tokyo">Tokyo</section>
-    <section id="dubai">Dubai</section>
-    <section id="paris">Paris</section>
-    <section id="lima">Lima</section> -->
-    <table id="storeTable" class="cookieShopDiv">
-        <!-- <thead>
-            <tr>
-                <th></th>
-                <th>6am</th>
-                <th>7am</th>
-                <th>8am</th>
-                <th>9am</th>
-                <th>10am</th>
-                <th>11am</th>
-                <th>12pm</th>
-                <th>1pm</th>
-                <th>2pm</th>
-                <th>3pm</th>
-                <th>4pm</th>
-                <th>5pm</th>
-                <th>6pm</th>
-                <th>7pm</th>
-                <th>Sales Total</th>
-            </tr>
-        </thead> -->
-    </table>
+   <h1>Cookie Sales</h1>
+    <table id="storeTable" class="cookieShopDiv"></table>
+
+    <main>
+        <form id="new-locations">
+            <fieldset>
+                <legend>New Salmon Cookies Location!</legend>
+                <label for="city">City:</label>
+                <input id="city" type="text" required/>
+                <label for="street">Street:</label>
+                <input id="street" type="text" required/>
+                <label for="country">Country:</label>
+                <input id="country" type="text" required/>
+                <label for="zip">ZIP Code:</label>
+                <input id="zip" type="text" required/>
+            </fieldset>
+
+        </form>
+    </main>
         
         <script src="js/app.js" async defer></script>
     </body>
