@@ -11,20 +11,29 @@
     </head>
     <body>
    <h1 id="salesTable">Cookie Sales</h1>
-    <table id="storeTable" class="cookieShopDiv"></table>
+
+    <table id="storeTable" class="cookieShopDiv">
+
+
+        <tfoot id="tableFooter">
+        </tfoot>
+    </table>
 
     <main>
         <form id="new-locations">
             <fieldset>
                 <legend>New Salmon Cookies Location!</legend>
-                <label for="city">City:</label>
-                <input id="city" type="text" required/>
-                <label for="street">Street:</label>
-                <input id="street" type="text" required/>
-                <label for="country">Country:</label>
-                <input id="country" type="text" required/>
-                <label for="zip">ZIP Code:</label>
-                <input id="zip" type="text" required/>                
+                <label for="location">Location:</label>
+                <input id="location" type="text" required/>
+                <br>
+                <label for="minCustomers">Min Customers Per Hour:</label>
+                <input id="minCustomers" type="text" required/>
+                <br>
+                <label for="maxCustomers">Max Customers Per Hour:</label>
+                <input id="maxCustomers" type="text" required/>
+                <br>
+                <label for="avgCustomers">Average Cookies Per Customer:</label>
+                <input id="avgCustomers" type="text" required/>                
             </fieldset>
                 <button type="reset" value="Reset">Reset Form</button>
                 <button id="submit">Submit Form</button>

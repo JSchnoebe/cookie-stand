@@ -59,6 +59,7 @@ body {
       border-radius: 10px;
       border-style: double;
       border-color: saddlebrown;
+      margin: 0 auto
   }
 
    ul {
@@ -111,6 +112,19 @@ body {
       font-size: 30px;
   }
 
+  fieldset {
+      margin: 0 auto;
+      width:min-content
+     
+
+  }
+
+  legend {
+      color: cadetblue;
+      font-size: 20px;
+      text-align: center;
+      text-decoration: underline;
+  }
 
 
 
