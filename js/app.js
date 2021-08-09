@@ -13,25 +13,10 @@ function StoreCreator(locationName, minCustPerHour, maxCustPerHour, avgCookiesPe
   StoreCreator.allStoresArray.push(this);
 }
 
-//comment
-/**
- * multi line comment 
- * enter 
- * enter 
- * 
- */
 /////////////////////Global Variables/////////////////////////
 const hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let tableElement = document.getElementById('storeTable');
-
-
-
-// getElementById();
-// createElement();
-// prompt()
-// alert()
-
-
+let cookiesEachHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 
 
@@ -111,10 +96,11 @@ function makeHeaderRow(){
 
 
 function makeFooterRow(){
+  const tableFooter = document.getElementById('storeTable');
   const tableRow = document.createElement('tr');
   let tableHeaderElement = document.createElement('th');
   tableHeaderElement.textContent = 'Totals';
-  tableRow.appendChild(tableHeaderElement);
+  tableFooter.appendChild(tableHeaderElement);
 
 
   let totalOfTotals = 0;
@@ -134,7 +120,8 @@ function makeFooterRow(){
   tableHeaderElement = document.createElement('th');
   tableHeaderElement.textContent = totalOfTotals;
   tableRow.appendChild(tableHeaderElement);
-  tableElement.appendChild(tableRow);
+  tableFooter.appendChild(tableRow);
+
 }
 
 
@@ -149,33 +136,70 @@ new StoreCreator('Paris', 20, 38, 2.3);
 new StoreCreator('Lima', 2, 16, 4.6);
 
 
-                        
-// const allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
-
-
-
-
 
 function random(min, max){
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-///////////////////////Form/////////////////////////
 
 
-
-
-///////////////////////ADD an Event Listener/////////////////////////
-
-
-
-
-
-(function renderAllStores(){
+StoreCreator.prototype.renderAllStores = function (){
+  let tbody = document.getElementById('storeTable');
+  tbody.innerHTML = '';
+  cookiesEachHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   makeHeaderRow();
   for(let i = 0; i < StoreCreator.allStoresArray.length; i++){
     StoreCreator.allStoresArray[i].render();
     console.log('this is inside the');
   }
   makeFooterRow();
-})();
+};
+
+
+
+///////////////////////Form/////////////////////////
+//add handle function
+function handleFormSubmit(event){
+  event.preventDefault();
+  console.log('inside the handle form to get values from inputs ', event);
+
+  let locationInput = document.getElementById('location');
+  let locationValue = locationInput.value;
+  console.log('location value is here ',locationValue);
+
+  let minCustInput = document.getElementById('minCustomers');
+  let minCustValue = parseInt(minCustInput.value);
+  console.log('min customer value is here ',minCustValue);
+
+  let maxCustInput = document.getElementById('maxCustomers');
+  let maxCustValue = parseInt(maxCustInput.value);
+  console.log('max customer value is here ',maxCustValue);
+
+  let avgCustInput = document.getElementById('avgCustomers');
+  let avgCustValue = parseInt(avgCustInput.value);
+  console.log('avg customer value is here ',avgCustValue);
+
+  let shopForm = document.getElementById('new-locations');
+  shopForm.reset();
+
+  let newStore = new StoreCreator(locationValue, minCustValue, maxCustValue, avgCustValue);
+  console.log('newStore', newStore);
+
+  newStore.calcCustEachHour();
+  newStore.calcCookiesEachHour();
+  newStore.renderAllStores();
+
+}
+
+
+
+///////////////////////ADD an Event Listener/////////////////////////
+
+//add event listener
+let formData = document.getElementById('new-locations');
+
+formData.addEventListener('submit', handleFormSubmit);
+
+
+
+StoreCreator.prototype.renderAllStores();
