@@ -150,7 +150,6 @@ StoreCreator.prototype.renderAllStores = function (){
   makeHeaderRow();
   for(let i = 0; i < StoreCreator.allStoresArray.length; i++){
     StoreCreator.allStoresArray[i].render();
-    console.log('this is inside the');
   }
   makeFooterRow();
 };
@@ -161,29 +160,23 @@ StoreCreator.prototype.renderAllStores = function (){
 //add handle function
 function handleFormSubmit(event){
   event.preventDefault();
-  console.log('inside the handle form to get values from inputs ', event);
 
   let locationInput = document.getElementById('location');
   let locationValue = locationInput.value;
-  console.log('location value is here ',locationValue);
 
   let minCustInput = document.getElementById('minCustomers');
   let minCustValue = parseInt(minCustInput.value);
-  console.log('min customer value is here ',minCustValue);
 
   let maxCustInput = document.getElementById('maxCustomers');
   let maxCustValue = parseInt(maxCustInput.value);
-  console.log('max customer value is here ',maxCustValue);
 
   let avgCustInput = document.getElementById('avgCustomers');
   let avgCustValue = parseInt(avgCustInput.value);
-  console.log('avg customer value is here ',avgCustValue);
 
   let shopForm = document.getElementById('new-locations');
   shopForm.reset();
 
   let newStore = new StoreCreator(locationValue, minCustValue, maxCustValue, avgCustValue);
-  console.log('newStore', newStore);
 
   newStore.calcCustEachHour();
   newStore.calcCookiesEachHour();
