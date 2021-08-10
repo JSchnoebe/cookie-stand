@@ -92,25 +92,24 @@ function makeFooterRow(){
   tableRow.appendChild(tableHeaderElement);
   tableFooter.appendChild(tableRow);
 
+  let totalOfTotals = 0;
 
-  // let totalOfTotals = 0;
+  for(let i = 0; i < hours.length; i++){
 
-  // for(let i = 0; i < hours.length; i++){
+    let hourlyTotals = 0;
 
-  //   let hourlyTotals = 0;
-
-  //   for(let j = 0; j < StoreCreator.allStoresArray.length; j++){
-  //     hourlyTotals += StoreCreator.allStoresArray[j].cookiesEachHour[i];
-  //     totalOfTotals = totalOfTotals + StoreCreator.allStoresArray[j].cookiesEachHour[i];
-  //   }
-  //   tableHeaderElement = document.createElement('th');
-  //   tableHeaderElement.textContent = hourlyTotals;
-  //   tableRow.appendChild(tableHeaderElement);
-  // }
-  // tableHeaderElement = document.createElement('th');
-  // tableHeaderElement.textContent = totalOfTotals;
-  // tableRow.appendChild(tableHeaderElement);
-  // tableFooter.appendChild(tableRow);
+    for(let j = 0; j < StoreCreator.allStoresArray.length; j++){
+      hourlyTotals += StoreCreator.allStoresArray[j].cookiesEachHour[i];
+      totalOfTotals = totalOfTotals + StoreCreator.allStoresArray[j].cookiesEachHour[i];
+    }
+    tableHeaderElement = document.createElement('th');
+    tableHeaderElement.textContent = hourlyTotals;
+    tableRow.appendChild(tableHeaderElement);
+  }
+  tableHeaderElement = document.createElement('th');
+  tableHeaderElement.textContent = totalOfTotals;
+  tableRow.appendChild(tableHeaderElement);
+  tableFooter.appendChild(tableRow);
 
 }
 
