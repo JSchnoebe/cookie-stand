@@ -30,10 +30,9 @@ StoreCreator.prototype.calcCustEachHour = function(){
 StoreCreator.prototype.calcCookiesEachHour = function(){
   this.calcCustEachHour();
   for (let i = 0; i < hours.length; i++){
-    let oneHour = Math.ceil(this.custEachHour[i] * this.avgCookiesPerSale);
-    this.cookiesEachHour.push(oneHour);
+    this.cookiesEachHour.push(Math.ceil(this.custEachHour[i] * this.avgCookiesPerSale));
     //totals
-    this.totalDailyCookies = this.totalDailyCookies + oneHour;
+    this.totalDailyCookies += Math.ceil(this.custEachHour[i] * this.avgCookiesPerSale);
   }
 };
 
@@ -130,7 +129,7 @@ StoreCreator.prototype.renderAllStores = function (){
 
 
 //////////////////////New Stores/////////////////////////////
-new StoreCreator('Seattle', 23, 65, 6.3);
+new StoreCreator('Seattle', 3, 5, 1.3);
 new StoreCreator('Tokyo', 3, 24, 1.2);
 new StoreCreator('Dubai', 11, 38, 3.7);
 new StoreCreator('Paris', 20, 38, 2.3);
@@ -145,7 +144,7 @@ StoreCreator.prototype.renderAllStores();
 //add handle function
 function handleFormSubmit(event){
   event.preventDefault();
-
+  this.totalDailyCookies = 0;
   let locationInput = document.getElementById('location');
   let locationValue = locationInput.value;
 
@@ -162,7 +161,7 @@ function handleFormSubmit(event){
   shopForm.reset();
 
   let newStore = new StoreCreator(locationValue, minCustValue, maxCustValue, avgCustValue);
-
+ 
   newStore.calcCustEachHour();
   newStore.calcCookiesEachHour();
   newStore.renderAllStores();
