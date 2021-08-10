@@ -29,6 +29,7 @@ StoreCreator.prototype.calcCustEachHour = function(){
 
 StoreCreator.prototype.calcCookiesEachHour = function(){
   this.calcCustEachHour();
+  this.totalDailyCookies = 0;
   for (let i = 0; i < hours.length; i++){
     this.cookiesEachHour.push(Math.ceil(this.custEachHour[i] * this.avgCookiesPerSale));
     //totals
@@ -144,7 +145,7 @@ StoreCreator.prototype.renderAllStores();
 //add handle function
 function handleFormSubmit(event){
   event.preventDefault();
-  this.totalDailyCookies = 0;
+  
   let locationInput = document.getElementById('location');
   let locationValue = locationInput.value;
 
