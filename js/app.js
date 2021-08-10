@@ -100,7 +100,7 @@ function makeFooterRow(){
 
     for(let j = 0; j < StoreCreator.allStoresArray.length; j++){
       hourlyTotals += StoreCreator.allStoresArray[j].cookiesEachHour[i];
-      totalOfTotals = totalOfTotals + StoreCreator.allStoresArray[j].cookiesEachHour[i];
+      totalOfTotals += StoreCreator.allStoresArray[j].cookiesEachHour[i];
     }
     tableHeaderElement = document.createElement('th');
     tableHeaderElement.textContent = hourlyTotals;
@@ -117,7 +117,9 @@ function makeFooterRow(){
 StoreCreator.prototype.renderAllStores = function (){
   let tbody = document.getElementById('storeTable');
   tbody.innerHTML = '';
+
   makeHeaderRow();
+
   for(let i = 0; i < StoreCreator.allStoresArray.length; i++){
     StoreCreator.allStoresArray[i].render();
   }
