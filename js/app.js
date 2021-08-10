@@ -1,6 +1,12 @@
 'use strict';
 console.log('the app js file is connected');
 
+
+/////////////////////Global Variables/////////////////////////
+const hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+let tableElement = document.getElementById('storeTable');
+
+
 /////////////////////Constructor////////////////////////
 function StoreCreator(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerSale){
   this.locationName = locationName;
@@ -12,16 +18,7 @@ function StoreCreator(locationName, minCustPerHour, maxCustPerHour, avgCookiesPe
   this.totalDailyCookies = 0;
   StoreCreator.allStoresArray.push(this);
 }
-
-/////////////////////Global Variables/////////////////////////
-const hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-let tableElement = document.getElementById('storeTable');
-let cookiesEachHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-
-
-
-
+StoreCreator.allStoresArray = [];
 
 //////////////////////////Prototype Function Calls/////////////////////////
 StoreCreator.prototype.calcCustEachHour = function(){
@@ -38,16 +35,35 @@ StoreCreator.prototype.calcCookiesEachHour = function(){
     //totals
     this.totalDailyCookies = this.totalDailyCookies + oneHour;
   }
-
 };
 
-
+function random(min, max){
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 
 
 
 
 ///////////////////////Render////////////////////////////////
+function makeHeaderRow(){
+  const tableRow = document.createElement('tr');
+  let tableHeaderElement = document.createElement('th');
+  tableHeaderElement.textContent = 'Locations';
+  tableRow.appendChild(tableHeaderElement);
+
+  for(let i = 0; i < hours.length; i++){
+    let tableHeaderElement = document.createElement('th');
+    tableHeaderElement.textContent = hours[i];
+    tableRow.appendChild(tableHeaderElement);
+  }
+  tableHeaderElement = document.createElement('th');
+  tableHeaderElement.textContent = 'Location Totals';
+  tableRow.appendChild(tableHeaderElement);
+  tableElement.appendChild(tableRow);
+}
+
+
 StoreCreator.prototype.render = function(){
   this.calcCookiesEachHour();
   let storeTable = document.getElementById('storeTable');
@@ -67,33 +83,6 @@ StoreCreator.prototype.render = function(){
   tableRow.appendChild(cookieTotal);
   storeTable.appendChild(tableRow);
 };
-
-
-
-
-
-
-function makeHeaderRow(){
-  const tableRow = document.createElement('tr');
-  let tableHeaderElement = document.createElement('th');
-  tableHeaderElement.textContent = 'Locations';
-  tableRow.appendChild(tableHeaderElement);
-
-  for(let i = 0; i < hours.length; i++){
-    let tableHeaderElement = document.createElement('th');
-    tableHeaderElement.textContent = hours[i];
-    tableRow.appendChild(tableHeaderElement);
-  }
-
-  tableHeaderElement = document.createElement('th');
-  tableHeaderElement.textContent = 'Location Totals';
-  tableRow.appendChild(tableHeaderElement);
-  tableElement.appendChild(tableRow);
-
-
-
-}
-
 
 function makeFooterRow(){
   const tableFooter = document.getElementById('storeTable');
@@ -125,28 +114,9 @@ function makeFooterRow(){
 }
 
 
-//////////////////////New Stores/////////////////////////////
-StoreCreator.allStoresArray = [];
-
-
-new StoreCreator('Seattle', 23, 65, 6.3);
-new StoreCreator('Tokyo', 3, 24, 1.2);
-new StoreCreator('Dubai', 11, 38, 3.7);
-new StoreCreator('Paris', 20, 38, 2.3);
-new StoreCreator('Lima', 2, 16, 4.6);
-
-
-
-function random(min, max){
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-
-
 StoreCreator.prototype.renderAllStores = function (){
   let tbody = document.getElementById('storeTable');
   tbody.innerHTML = '';
-  cookiesEachHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   makeHeaderRow();
   for(let i = 0; i < StoreCreator.allStoresArray.length; i++){
     StoreCreator.allStoresArray[i].render();
@@ -155,6 +125,19 @@ StoreCreator.prototype.renderAllStores = function (){
 };
 
 
+
+
+//////////////////////New Stores/////////////////////////////
+new StoreCreator('Seattle', 23, 65, 6.3);
+new StoreCreator('Tokyo', 3, 24, 1.2);
+new StoreCreator('Dubai', 11, 38, 3.7);
+new StoreCreator('Paris', 20, 38, 2.3);
+new StoreCreator('Lima', 2, 16, 4.6);
+
+
+
+
+StoreCreator.prototype.renderAllStores();
 
 ///////////////////////Form/////////////////////////
 //add handle function
@@ -187,12 +170,6 @@ function handleFormSubmit(event){
 
 
 ///////////////////////ADD an Event Listener/////////////////////////
-
-//add event listener
 let formData = document.getElementById('new-locations');
-
 formData.addEventListener('submit', handleFormSubmit);
 
-
-
-StoreCreator.prototype.renderAllStores();
